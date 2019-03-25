@@ -2,9 +2,12 @@ package edu.ap.spring.transaction;
 
 import java.security.*;
 
+import org.springframework.stereotype.Service;
+
 import edu.ap.spring.service.BlockChain;
 import edu.ap.spring.service.StringUtil;
 
+@Service
 public class Transaction {
 	
 	public String transactionId; // contains a hash of transaction

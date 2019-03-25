@@ -13,6 +13,8 @@ import edu.ap.spring.transaction.Transaction;
 //import edu.ap.spring.transaction.TransactionOutput;
 import edu.ap.spring.service.Block;
 
+@Service
+@Component
 @Scope("prototype")
 public class BChainInit {
     @Autowired
@@ -36,15 +38,15 @@ public class BChainInit {
 		walletB.generateKeyPair();
 
 		//create genesis transaction, which sends 100 coins to walletA:
-		genesisTransaction.setSender(coinbase.getPublicKey());
-		genesisTransaction.setRecipient(walletA.getPublicKey());
-		genesisTransaction.setValue(100f);
-		//genesisTransaction.setInputs(null);
-		genesisTransaction.generateSignature(coinbase.getPrivateKey()); // manually sign the genesis transaction
-		genesisTransaction.transactionId = "0"; //manually set the transaction id
-		//genesisTransaction.outputs.add(new TransactionOutput(genesisTransaction.recipient, genesisTransaction.value, genesisTransaction.transactionId)); //manually add the Transactions Output
-		//bChain.getUTXOs().put(genesisTransaction.outputs.get(0).id, genesisTransaction.outputs.get(0)); //it's important to store our first transaction in the UTXOs list.
-				
+		block1.setPreviousHash(genesis.hash);
+		block1.setTimeStamp();
+		block1.calculateHash();
+
+		try {
+			block1.addTransaction(walletA.sendFunds(walletB.getPublicKey(),50f), bChain);
+		} catch (Exception e) {
+			//TODO: handle exception
+		}
 		//creating and Mining Genesis block
 		genesis.setPreviousHash("0");
 		genesis.setTimeStamp();

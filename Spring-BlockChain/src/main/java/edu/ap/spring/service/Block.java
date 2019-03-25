@@ -3,8 +3,11 @@ package edu.ap.spring.service;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.stereotype.Service;
+
 import edu.ap.spring.transaction.Transaction;
 
+@Service
 public class Block {
 	
 	public String hash;

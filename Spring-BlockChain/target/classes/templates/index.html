@@ -8,7 +8,41 @@
 </head>
 
 <body>
-<h1>Done</h1>
+<div class='card card-body bg-light'>
+    <h1>Hello!</h1>
+    <form th:action='@{/init}' method='POST'>
+        <input type='SUBMIT' value='Initialize'>
+    </form>
+    <form th:action="@{'/balance'}" method='POST'>
+        <label for='walletKey'>Wallet : </label>
+		<input type='text' class='form-control' name='walletKey' id='walletKey'>
+        <input type='SUBMIT' value='Get Balance'>
+    </form>
+
+    <form th:action='@{/transaction}' method='POST'>
+        <div class='form-group row'>
+             <div class='col-xs-4'>
+                <label for='from'>from : </label>
+                    <input type='text' class='form-control' name='from' id='from'>
+                </div>
+            </div>
+        <div class='form-group row'>
+            <div class='col-xs-4'>
+                <label for='to'>To : </label>
+                    <input type='text' class='form-control' name='to' id='to'>
+                </div>
+            </div>
+            <div class='form-group row'>
+                <div class='col-xs-4'>
+                <label for='amount'>Amount : </label>
+                    <input type='text' class='form-control' name='amount' id='amount'>
+                </div>
+            </div>
+            
+        <input type='SUBMIT' value='Send'>
+</form>
+
+</div>
 
 </body>
 </html>

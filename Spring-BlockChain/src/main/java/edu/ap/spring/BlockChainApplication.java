@@ -15,6 +15,7 @@ public class BlockChainApplication {
 
 	@Bean
   	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return (args) -> {};
+		return (args) -> {
+		};
   	}
 }

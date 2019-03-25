@@ -20,19 +20,13 @@ import edu.ap.spring.service.BChainInit;
 import edu.ap.spring.service.Wallet;
 
 @Controller
-@PostConstruct
-public class BchainController {
+public class BChainController {
 
     @Autowired
     private BChainInit bChain;
 
     @GetMapping("/")
     public String index(Model model) {
-        return "index";
-    }
-
-    @PostMapping("/")
-    public String getIndex(Model model) {
         return "index";
     }
 
@@ -84,15 +78,7 @@ public class BchainController {
         return b.toString();
     }
 
-    @PostMapping("/balance")
-    public String balance(@RequestParam("walletKey") String key, Model model) {
-        Wallet wallet = bChain.getWalletFromKey(key);
-        float balance = wallet.getBalance();
-        model.addAttribute("balance",balance);
-        return "balance";
-    }
-
-    @PostMapping("/sendFunds")
+    @PostMapping("/transaction")
     public String sendFunds(@RequestParam("from") String from, @RequestParam("to") String to,
             @RequestParam("amount") Float amount) {
         Wallet senderWallet = bChain.getWalletFromKey(from);

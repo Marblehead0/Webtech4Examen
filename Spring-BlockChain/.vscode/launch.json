@@ -2,12 +2,12 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Spring Boot-BlockChainApplication<spring-blockchain>",
+            "name": "Spring Boot-BlockChainApplication<spring-junit-blockchain>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "mainClass": "edu.ap.spring.BlockChainApplication",
-            "projectName": "spring-blockchain",
+            "projectName": "spring-junit-blockchain",
             "args": ""
         }
     ]
