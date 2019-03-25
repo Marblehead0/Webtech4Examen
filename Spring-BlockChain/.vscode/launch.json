@@ -9,6 +9,16 @@
             "mainClass": "edu.ap.spring.BlockChainApplication",
             "projectName": "spring-junit-blockchain",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BlockChainApplication<spring-blockchain>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "edu.ap.spring.BlockChainApplication",
+            "projectName": "spring-blockchain",
+            "args": ""
         }
     ]
 }

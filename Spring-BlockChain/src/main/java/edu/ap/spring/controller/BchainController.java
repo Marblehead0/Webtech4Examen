@@ -20,7 +20,7 @@ import edu.ap.spring.service.BChainInit;
 import edu.ap.spring.service.Wallet;
 
 @Controller
-public class BChainController {
+public class BchainController {
 
     @Autowired
     private BChainInit bChain;
