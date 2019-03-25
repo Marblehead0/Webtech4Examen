@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.assertEquals;
 
+import javax.annotation.PostConstruct;
+
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 
@@ -25,6 +27,7 @@ public class SpringTest1 {
 	private Transaction genesisTransaction;
 
 	@Before
+	@PostConstruct
 	public void init() {
 		bChain.setSecurity();
 		coinbase.generateKeyPair();
