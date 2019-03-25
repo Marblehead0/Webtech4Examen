@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PathVariable;
-import javax.annotation.PostConstruct;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,10 +79,9 @@ public class BChainController {
     }
 
     @PostMapping("/transaction")
-    public String sendFunds(@RequestParam("from") String from, @RequestParam("to") String to,
-            @RequestParam("amount") Float amount) {
-        Wallet senderWallet = bChain.getWalletFromKey(from);
-        Wallet receiverWallet = bChain.getWalletFromKey(to);
+    public String sendFunds(@RequestParam("amount") Float amount) {
+        Wallet senderWallet = bChain.walletA;
+        Wallet receiverWallet = bChain.walletB;
         try{
             bChain.block1.addTransaction(senderWallet.sendFunds(receiverWallet.getPublicKey(), amount), bChain.bChain);
         }catch(Exception e){}

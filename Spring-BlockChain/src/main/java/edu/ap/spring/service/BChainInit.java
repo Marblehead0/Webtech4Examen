@@ -38,29 +38,15 @@ public class BChainInit {
 		walletB.generateKeyPair();
 
 		//create genesis transaction, which sends 100 coins to walletA:
-		block1.setPreviousHash(genesis.hash);
-		block1.setTimeStamp();
-		block1.calculateHash();
-
-		try {
-			block1.addTransaction(walletA.sendFunds(walletB.getPublicKey(),50f), bChain);
-		} catch (Exception e) {
-			//TODO: handle exception
-		}
+		genesisTransaction = new Transaction(coinbase.getPublicKey(), walletA.getPublicKey(), 100f);
+		genesisTransaction.generateSignature(coinbase.getPrivateKey());	 // manually sign the genesis transaction	
+		genesisTransaction.transactionId = "0"; // manually set the transaction id
+						
 		//creating and Mining Genesis block
+		Block genesis = new Block();
 		genesis.setPreviousHash("0");
-		genesis.setTimeStamp();
-		genesis.calculateHash();
 		genesis.addTransaction(genesisTransaction, bChain);
-        bChain.addBlock(genesis);
-        
-        //IS GOOD?
-        block1.setPreviousHash(genesis.hash);
-		block1.setTimeStamp();
-        block1.calculateHash();
-
-        map.put("A",walletA);
-        map.put("B", walletB);
+		bChain.addBlock(genesis);
     }
     public Wallet getWalletFromKey(String wallet){
         return this.map.get(wallet);
